@@ -7,11 +7,25 @@ namespace MagiciansBrawl.MBDungeon
     [System.Serializable]
     public class Tiles
     {
+        // Tile Size
+        public static readonly int TILE_SIZE = 1;
+
+        // Tiles Object Name
+        public string name;
+
         // TileType
         public TileType tileType;
 
         // List of all Tiles for TileType
         public List<TileBase> tiles;
+
+        // Constructor
+        public Tiles(string name, TileType tileType, List<TileBase> tiles)
+        {
+            this.name = name;
+            this.tileType = tileType;
+            this.tiles = tiles;
+        }
 
         // Add Tile
         public void Add(TileBase tileBase)
@@ -21,6 +35,15 @@ namespace MagiciansBrawl.MBDungeon
                 return;
             }
             tiles.Add(tileBase);
+        }
+
+        // Returns the Tiles Object Name
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
         }
 
         // Get TileType

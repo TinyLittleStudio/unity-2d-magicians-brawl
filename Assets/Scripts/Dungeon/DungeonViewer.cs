@@ -6,23 +6,17 @@ namespace MagiciansBrawl.MBDungeon
 {
     public class DungeonViewer : MonoBehaviour
     {
-        // Padding between Rooms
-        public static readonly int PADDING = 2;
-
-        // Width and Height of a Room
-        public static readonly int HEIGHT = 10, WIDTH = 16;
-
         // The Tilemap to Instantiate the Tiles on
         public Tilemap tilemap;
 
-        // Unity Awake
-        void Awake()
+        // Start
+        void Start()
         {
             // Test-Dungeon Setup
             DungeonPreset dungeonPreset = new DungeonPreset
             {
-                Length = 50,
-                Theme = TilesManager.DEFAULT_THEME
+                Length = 20,
+                Theme = TileHandler.DEFAULT_THEME
             };
 
             Dungeon dungeon = new Dungeon(dungeonPreset);
@@ -47,7 +41,7 @@ namespace MagiciansBrawl.MBDungeon
 
             string theme = dungeonPreset.Theme;
 
-            List<TileSet> tileSets = TilesManager.GetTileSets(theme);
+            List<TileSet> tileSets = TileHandler.GetTileSets(theme);
 
             TileSet tileSet = tileSets.Count > 0 ? tileSets[0] : null;
 
@@ -63,17 +57,17 @@ namespace MagiciansBrawl.MBDungeon
                 // Create each Tile (Wall or Ground) of Room
                 Coordinates coordinates = room.GetCoordinates();
 
-                for (int y = 0; y < DungeonViewer.HEIGHT; y++)
+                for (int y = 0; y < Room.HEIGHT; y++)
                 {
-                    for (int x = 0; x < DungeonViewer.WIDTH; x++)
+                    for (int x = 0; x < Room.WIDTH; x++)
                     {
                         Vector3Int position = new Vector3Int(
-                            (coordinates.X * (DungeonViewer.WIDTH + DungeonViewer.PADDING)) + x,
-                            (coordinates.Y * (DungeonViewer.HEIGHT + DungeonViewer.PADDING)) + y,
+                            (coordinates.X * (Room.WIDTH + Room.PADDING)) + x,
+                            (coordinates.Y * (Room.HEIGHT + Room.PADDING)) + y,
                             0
                         );
 
-                        bool isWall = x == 0 || y == 0 || x == DungeonViewer.WIDTH - 1 || y == DungeonViewer.HEIGHT - 1;
+                        bool isWall = x == 0 || y == 0 || x == Room.WIDTH - 1 || y == Room.HEIGHT - 1;
 
                         tilemap.SetTile(position, isWall ? tileSet.GetRandomTile(TileType.WALL) : tileSet.GetRandomTile(TileType.GROUND));
                     }
@@ -89,31 +83,31 @@ namespace MagiciansBrawl.MBDungeon
 
                     if (Direction.NORTH.Equals(direction))
                     {
-                        x = DungeonViewer.WIDTH / 2;
+                        x = Room.WIDTH / 2;
                         y = 0;
                     }
 
                     if (Direction.EAST.Equals(direction))
                     {
-                        x = DungeonViewer.WIDTH - 1;
-                        y = DungeonViewer.HEIGHT / 2;
+                        x = Room.WIDTH - 1;
+                        y = Room.HEIGHT / 2;
                     }
 
                     if (Direction.SOUTH.Equals(direction))
                     {
-                        x = DungeonViewer.WIDTH / 2;
-                        y = DungeonViewer.HEIGHT - 1;
+                        x = Room.WIDTH / 2;
+                        y = Room.HEIGHT - 1;
                     }
 
                     if (Direction.WEST.Equals(direction))
                     {
                         x = 0;
-                        y = DungeonViewer.HEIGHT / 2;
+                        y = Room.HEIGHT / 2;
                     }
 
                     Vector3Int position = new Vector3Int(
-                        (coordinates.X * (DungeonViewer.WIDTH + DungeonViewer.PADDING)) + x,
-                        (coordinates.Y * (DungeonViewer.HEIGHT + DungeonViewer.PADDING)) + y,
+                        (coordinates.X * (Room.WIDTH + Room.PADDING)) + x,
+                        (coordinates.Y * (Room.HEIGHT + Room.PADDING)) + y,
                         0
                     );
 

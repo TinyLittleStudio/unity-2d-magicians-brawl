@@ -1,9 +1,19 @@
-﻿public static class Settings
+﻿namespace MagiciansBrawl.MBUtils
 {
-    // Tags
-    public static class Tags
+    public static class Settings
     {
-        // Player Tag
-        public static readonly string PLAYER = "Player";
+        // Tags
+        public static class Tags
+        {
+            // Player Tag
+            public static readonly string PLAYER = "Player";
+        }
+
+        // Depths
+        public static class Depths
+        {
+            // Object Depth
+            public static readonly int OBJECT_DEPTH = -1;
+        }
     }
 }

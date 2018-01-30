@@ -5,6 +5,9 @@ namespace MagiciansBrawl.MBDungeon
 {
     public class Dungeon
     {
+        // Current Dungeon Instance
+        private static Dungeon instance;
+
         // Dungeon Preset (Contains all Required Information to Generate a Dungeon)
         private DungeonPreset dungeonPreset;
 
@@ -23,6 +26,7 @@ namespace MagiciansBrawl.MBDungeon
             // Initialize Values
             rooms = new List<Room>();
 
+            // Generate Start Room
             Room start = Room.CreateRoom(this, RoomType.START, new Coordinates(0, 0));
             rooms.Add(start);
 
@@ -74,6 +78,9 @@ namespace MagiciansBrawl.MBDungeon
                     }
                 }
             }
+
+            // Set Current Dungeon Instance
+            Dungeon.instance = this;
         }
 
         // Returns Coordinates for a Room to Create
@@ -204,6 +211,26 @@ namespace MagiciansBrawl.MBDungeon
         public DungeonPreset GetDungeonPreset()
         {
             return dungeonPreset;
+        }
+
+        // Get Dungeon Room Index by World Position
+        public static Coordinates GetGameObjectCoordinates(GameObject gameObject)
+        {
+            Transform transform = gameObject.transform;
+
+            float x = transform.position.x;
+            float y = transform.position.y;
+
+            x = Mathf.FloorToInt(x / (float)((Room.WIDTH + Room.PADDING) * Tiles.TILE_SIZE));
+            y = Mathf.FloorToInt(y / (float)((Room.HEIGHT + Room.PADDING) * Tiles.TILE_SIZE));
+
+            return new Coordinates((int)x, (int)y);
+        }
+
+        // Get Current Dungeon Instance
+        public static Dungeon GetDungeonInstance()
+        {
+            return Dungeon.instance;
         }
     }
 }

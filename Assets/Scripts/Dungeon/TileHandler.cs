@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace MagiciansBrawl.MBDungeon
 {
-    public class TilesManager : MonoBehaviour
+    public class TileHandler : MonoBehaviour
     {
         // Default Theme Key
         public static readonly string DEFAULT_THEME = "default";
 
-        // TileManager Instance
-        private static TilesManager instance;
+        // Tile Manager Instance
+        private static TileHandler instance;
 
         // List of TileSets
         public List<TileSet> tileSets = new List<TileSet>();
@@ -17,13 +17,13 @@ namespace MagiciansBrawl.MBDungeon
         // Awake
         void Awake()
         {
-            if (TilesManager.instance == null)
+            if (TileHandler.instance == null)
             {
-                TilesManager.instance = this;
+                TileHandler.instance = this;
             }
             else
             {
-                tileSets = TilesManager.instance.tileSets;
+                tileSets = TileHandler.instance.tileSets;
             }
         }
 
@@ -38,7 +38,7 @@ namespace MagiciansBrawl.MBDungeon
             }
             theme = theme.ToLower();
 
-            foreach (TileSet tileSet in TilesManager.instance.tileSets)
+            foreach (TileSet tileSet in TileHandler.instance.tileSets)
             {
                 string temp = tileSet.theme.ToLower();
 

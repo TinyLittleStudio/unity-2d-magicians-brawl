@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 240106489}
   - component: {fileID: 240106488}
   m_Layer: 0
-  m_Name: Tiles Manager
+  m_Name: '[Handler] Tiles Handler'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,14 +143,17 @@ MonoBehaviour:
   tileSets:
   - theme: default
     tiles:
-    - tileType: 0
+    - name: Wall Tiles
+      tileType: 0
       tiles:
       - {fileID: 11400000, guid: 6fe2464b00fa69f4dbc784bda255db05, type: 2}
-    - tileType: 1
+    - name: Ground Tiles
+      tileType: 1
       tiles:
       - {fileID: 11400000, guid: d0863c05b2542034bba65334a20f3288, type: 2}
       - {fileID: 11400000, guid: 7b16996eee1ca214683c6e26cb348b2c, type: 2}
-    - tileType: 2
+    - name: Door Tiles
+      tileType: 2
       tiles:
       - {fileID: 11400000, guid: 24f32ad30371ae541be620907f690453, type: 2}
 --- !u!4 &240106489
@@ -159,12 +162,133 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 240106487}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1922468815}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &577560143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 577560144}
+  - component: {fileID: 577560145}
+  m_Layer: 0
+  m_Name: '[Handler] Room Handler'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &577560144
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577560143}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1922468815}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &577560145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577560143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab0b406f93b8ce4c91efd367a77b229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPresets:
+  - name: Two Lines
+    roomPresetObjects:
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 8
+      y: 3
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 8
+      y: 6
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 9
+      y: 3
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 9
+      y: 6
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 7
+      y: 3
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 6
+      y: 3
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 7
+      y: 6
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 6
+      y: 6
+  - name: Center Block
+    roomPresetObjects:
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 7
+      y: 4
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 7
+      y: 5
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 8
+      y: 4
+    - gameObject: {fileID: 1370418967957698, guid: 00e99c317c64fb941ad909c2d26e65f3,
+        type: 2}
+      x: 8
+      y: 5
+--- !u!1 &652002153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 652002154}
+  m_Layer: 0
+  m_Name: '[Dungeon] Dungeon Content'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &652002154
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 652002153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1225896295}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &675169946
 GameObject:
@@ -176,7 +300,7 @@ GameObject:
   - component: {fileID: 675169948}
   - component: {fileID: 675169947}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: '[Dungeon][Tilemap] Grid'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,7 +341,7 @@ GameObject:
   - component: {fileID: 1225896295}
   - component: {fileID: 1225896294}
   m_Layer: 0
-  m_Name: Dungeon Generator
+  m_Name: '[Dungeon] Dungeon Generator'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,8 +370,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 675169948}
+  - {fileID: 652002154}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1279847260
 GameObject:
@@ -262,8 +387,8 @@ GameObject:
   - component: {fileID: 1279847264}
   - component: {fileID: 1279847263}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
+  m_Name: '[Player] Player'
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -319,11 +444,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1279847260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 3.4354339, y: 3.4354339, z: 3.4354339}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1279847263
 MonoBehaviour:
@@ -333,12 +458,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1279847260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eecbc837b5ef8c45918576e96bc7dcb, type: 3}
+  m_Script: {fileID: 11500000, guid: e6cda238f0d055749a36b7338cd659a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   smoothness: 0.1
-  offset: {x: 0, y: 0, z: -40}
-  velocity: 6
+  distance: 4.2
+  offset: {x: 0, y: 0, z: -10}
+  velocity: 8
 --- !u!58 &1279847264
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -386,7 +512,7 @@ GameObject:
   - component: {fileID: 1394053063}
   - component: {fileID: 1394053065}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: '[Dungeon][Tilemap] Tilemap'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,7 +632,7 @@ GameObject:
   - component: {fileID: 1790245851}
   - component: {fileID: 1790245850}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: '[Camera] Main Camera'
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,7 +672,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -573,5 +699,78 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1922468814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1922468815}
+  m_Layer: 0
+  m_Name: '[Manager] Global Game Managers'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1922468815
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1922468814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 240106489}
+  - {fileID: 577560144}
+  - {fileID: 2022002544}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2022002543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2022002544}
+  - component: {fileID: 2022002545}
+  m_Layer: 0
+  m_Name: '[Handler] Dungeon Handler'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2022002544
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2022002543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1922468815}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2022002545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2022002543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a93827cf6abaa42b801503f08785f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1279847260}
+  content: {fileID: 652002153}
