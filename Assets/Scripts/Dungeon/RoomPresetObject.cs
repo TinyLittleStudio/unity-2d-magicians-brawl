@@ -1,16 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace MagiciansBrawl.MBDungeon
 {
-    [System.Serializable]
+    [Serializable]
     public class RoomPresetObject
     {
         // GameObject to Instantiate
-        public GameObject gameObject;
+        [SerializeField]
+        private GameObject gameObject;
 
         // Coordinates to Instantiate
-        public int x;
-        public int y;
+        [SerializeField]
+        private int x;
+        [SerializeField]
+        private int y;
 
         // Constructor
         public RoomPresetObject(GameObject gameObject, int x, int y)

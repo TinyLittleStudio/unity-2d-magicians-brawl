@@ -1,12 +1,11 @@
-﻿using UnityEngine;
+﻿using MagiciansBrawl.MBProjectile;
+using UnityEngine;
 
 namespace MagiciansBrawl.MBPlayer
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour
     {
-        // Bug: Camera and Player Movement Not Working Together
-
         // Smoothness Value for Camera Movement
         [Header("Camera Controller Settings")]
         public float smoothness = 0.2f;
@@ -22,6 +21,10 @@ namespace MagiciansBrawl.MBPlayer
         // Player Movement Velocity
         [Header("Player Controller Settings")]
         public float velocity = 10.0f;
+
+        // The Current Projectile
+        [Header("Projectile Settings")]
+        public Projectile projectile;
 
         // Player Ridigbody2D
         private Rigidbody2D rigidbody2d;
@@ -40,18 +43,39 @@ namespace MagiciansBrawl.MBPlayer
             {
                 this.rigidbody2d = GetComponent<Rigidbody2D>();
             }
+
+            // Set Default Projectile
+            this.projectile = ProjectileHandler.GetProjectile("Red");
         }
 
         // Update
         private void Update()
         {
-            // Receive Input
+            // Receive Movement Input
             Vector2 input = new Vector2
             {
                 x = Input.GetAxisRaw("Horizontal"),
                 y = Input.GetAxisRaw("Vertical")
             };
             movement = input.normalized * velocity;
+
+            // Reveice Projectile Input
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (projectile == null)
+                {
+                    return;
+                }
+                Vector2 direction = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                direction = Camera.main.ScreenToWorldPoint(direction);
+                direction.Set(direction.x - transform.position.x, direction.y - transform.position.y);
+                direction = direction.normalized;
+
+                GameObject gameObject = Instantiate(projectile.gameObject, transform.position, Quaternion.identity);
+
+                Projectile component = gameObject.GetComponent<Projectile>();
+                component.Towards(direction);
+            }
         }
 
         // FixedUpdate

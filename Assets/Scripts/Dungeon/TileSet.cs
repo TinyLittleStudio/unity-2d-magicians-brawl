@@ -1,17 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace MagiciansBrawl.MBDungeon
 {
-    [System.Serializable]
+    [Serializable]
     public class TileSet
     {
         // Theme Key
-        public string theme;
+        [SerializeField]
+        private string theme;
 
         // Tiles 
-        public List<Tiles> tiles;
+        [SerializeField]
+        private List<Tiles> tiles;
 
         // Constructor
         public TileSet(string theme, List<Tiles> tiles)
@@ -46,7 +49,7 @@ namespace MagiciansBrawl.MBDungeon
         {
             List<Tiles> tilesList = GetTiles(tileType);
 
-            Tiles tiles = tilesList[Random.Range(0, tilesList.Count)];
+            Tiles tiles = tilesList[UnityEngine.Random.Range(0, tilesList.Count)];
 
             return tiles;
         }

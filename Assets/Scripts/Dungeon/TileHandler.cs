@@ -12,10 +12,12 @@ namespace MagiciansBrawl.MBDungeon
         private static TileHandler instance;
 
         // List of TileSets
-        public List<TileSet> tileSets = new List<TileSet>();
+        [Header("Tile Settings")]
+        [SerializeField]
+        private List<TileSet> tileSets = new List<TileSet>();
 
         // Awake
-        void Awake()
+        private void Awake()
         {
             if (TileHandler.instance == null)
             {
@@ -40,7 +42,7 @@ namespace MagiciansBrawl.MBDungeon
 
             foreach (TileSet tileSet in TileHandler.instance.tileSets)
             {
-                string temp = tileSet.theme.ToLower();
+                string temp = tileSet.GetTheme().ToLower();
 
                 if (temp.Equals(theme))
                 {

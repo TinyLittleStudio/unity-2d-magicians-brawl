@@ -17,23 +17,19 @@ namespace MagiciansBrawl.MBDungeon
 
         // The Player Object
         [Header("Player Game Object")]
-        public GameObject player;
+        [SerializeField]
+        private GameObject player;
 
         // The Player Object
         [Header("Game Content Object")]
-        public GameObject content;
+        [SerializeField]
+        private GameObject content;
 
         // All Instantiated GameObjects (Temporary Storage)
         private List<GameObject> gameObjects = new List<GameObject>();
 
-        // Constructor
-        private DungeonHandler()
-        {
-
-        }
-
         // Awake
-        void Awake()
+        private void Awake()
         {
             // Set Instance or Destroy
             if (DungeonHandler.instance == null)
@@ -58,7 +54,7 @@ namespace MagiciansBrawl.MBDungeon
         }
 
         // Late Update
-        void LateUpdate()
+        private void LateUpdate()
         {
             // Check for Dungeon Instance
             Dungeon temp = Dungeon.GetDungeonInstance();

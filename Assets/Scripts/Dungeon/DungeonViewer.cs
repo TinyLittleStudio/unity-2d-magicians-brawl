@@ -10,7 +10,7 @@ namespace MagiciansBrawl.MBDungeon
         public Tilemap tilemap;
 
         // Start
-        void Start()
+        private void Start()
         {
             // Test-Dungeon Setup
             DungeonPreset dungeonPreset = new DungeonPreset

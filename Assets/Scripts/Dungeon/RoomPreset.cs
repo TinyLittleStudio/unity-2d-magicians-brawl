@@ -1,15 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace MagiciansBrawl.MBDungeon
 {
-    [System.Serializable]
+    [Serializable]
     public class RoomPreset
     {
         // Room Preset Name
-        public string name;
+        [SerializeField]
+        private string name;
 
         // All Room Preset Objects in Room Preset
-        public List<RoomPresetObject> roomPresetObjects = new List<RoomPresetObject>();
+        [SerializeField]
+        private List<RoomPresetObject> roomPresetObjects = new List<RoomPresetObject>();
 
         // Constructor
         public RoomPreset(string name, params RoomPresetObject[] roomPresetObjects)

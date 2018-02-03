@@ -1,23 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace MagiciansBrawl.MBDungeon
 {
-    [System.Serializable]
+    [Serializable]
     public class Tiles
     {
         // Tile Size
         public static readonly int TILE_SIZE = 1;
 
         // Tiles Object Name
-        public string name;
+        [SerializeField]
+        private string name;
 
         // TileType
-        public TileType tileType;
+        [SerializeField]
+        private TileType tileType;
 
         // List of all Tiles for TileType
-        public List<TileBase> tiles;
+        [SerializeField]
+        private List<TileBase> tiles;
 
         // Constructor
         public Tiles(string name, TileType tileType, List<TileBase> tiles)
@@ -61,7 +65,7 @@ namespace MagiciansBrawl.MBDungeon
         // Get Random Tile
         public TileBase GetRandomTile()
         {
-            return tiles != null ? tiles[Random.Range(0, tiles.Count)] : null;
+            return tiles != null ? tiles[UnityEngine.Random.Range(0, tiles.Count)] : null;
         }
     }
 }

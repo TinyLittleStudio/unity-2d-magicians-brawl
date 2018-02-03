@@ -9,16 +9,12 @@ namespace MagiciansBrawl.MBDungeon
         private static RoomHandler instance;
 
         // Available Room Presets
-        public List<RoomPreset> roomPresets = new List<RoomPreset>();
-
-        // Constructor
-        private RoomHandler()
-        {
-
-        }
+        [Header("Room Settings")]
+        [SerializeField]
+        private List<RoomPreset> roomPresets = new List<RoomPreset>();
 
         // Awake
-        void Awake()
+        private void Awake()
         {
             // Set Instance or Destroy
             if (RoomHandler.instance == null)
